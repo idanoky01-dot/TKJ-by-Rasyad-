@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belajar Bersama Rasyad - TKJ</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#07111f;
+    color:#eaf4ff;
+    overflow-x:hidden;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:.25;
+    animation:float 8s infinite ease-in-out;
+}
+
+.c1{
+    width:250px;
+    height:250px;
+    background:#00d9ff;
+    top:5%;
+    left:-80px;
+}
+
+.c2{
+    width:300px;
+    height:300px;
+    background:#7c3aed;
+    right:-100px;
+    top:40%;
+    animation-delay:2s;
+}
+
+.c3{
+    width:200px;
+    height:200px;
+    background:#10b981;
+    bottom:-50px;
+    left:35%;
+    animation-delay:4s;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-30px)}
+}
+
+/* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(5,15,30,.9);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.1);
+    padding:15px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#00d9ff;
+}
+
+.logo span{
+    color:white;
+}
+
+.nav-links{
+    display:flex;
+    gap:12px;
+    list-style:none;
+}
+
+.nav-links button{
+    background:none;
+    border:none;
+    color:#dcecff;
+    cursor:pointer;
+    padding:10px;
+    border-radius:8px;
+}
+
+.nav-links button:hover{
+    background:#12304b;
+    color:#00d9ff;
+}
+
+.menu{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:60px 8%;
+    gap:40px;
+}
+
+.hero-text{
+    max-width:650px;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(0,217,255,.1);
+    border:1px solid #00d9ff;
+    color:#00d9ff;
+    padding:8px 15px;
+    border-radius:30px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(40px,7vw,75px);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#00d9ff,#8b5cf6,#22c55e);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:#a9bdd0;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    padding:14px 22px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#00d9ff;
+    color:#00121c;
+}
+
+.btn-secondary{
+    background:#12283e;
+    color:white;
+    border:1px solid #274866;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* NETWORK ANIMATION */
+.network{
+    width:430px;
+    height:330px;
+    position:relative;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.device{
+    position:absolute;
+    width:75px;
+    height:55px;
+    border-radius:12px;
+    background:#102d46;
+    border:1px solid #00d9ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    box-shadow:0 0 20px rgba(0,217,255,.2);
+    animation:pulse 2s infinite;
+}
+
+.router{left:175px;top:135px}
+.pc1{left:35px;top:50px}
+.pc2{right:35px;top:50px}
+.server{left:35px;bottom:40px}
+.pc3{right:35px;bottom:40px}
+
+.line{
+    position:absolute;
+    height:3px;
+    background:linear-gradient(90deg,#00d9ff,transparent,#00d9ff);
+    transform-origin:left;
+    animation:dataflow 1.5s infinite linear;
+}
+
+.l1{
+    width:145px;
+    left:105px;
+    top:105px;
+    transform:rotate(20deg);
+}
+
+.l2{
+    width:145px;
+    left:250px;
+    top:105px;
+    transform:rotate(160deg);
+}
+
+.l3{
+    width:145px;
+    left:105px;
+    top:220px;
+    transform:rotate(-20deg);
+}
+
+.l4{
+    width:145px;
+    left:250px;
+    top:220px;
+    transform:rotate(200deg);
+}
+
+@keyframes dataflow{
+    0%{opacity:.2}
+    50%{opacity:1}
+    100%{opacity:.2}
+}
+
+@keyframes pulse{
+    50%{transform:scale(1.05)}
+}
+
+/* SECTION */
+section{
+    padding:80px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#91a7bc;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:rgba(13,31,49,.85);
+    border:1px solid rgba(255,255,255,.1);
+    padding:25px;
+    border-radius:18px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#00d9ff;
+}
+
+.icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#9eb2c6;
+    line-height:1.7;
+}
+
+.card button{
+    margin-top:18px;
+}
+
+/* LESSON */
+.lesson{
+    max-width:1000px;
+    margin:auto;
+    background:rgba(8,25,42,.9);
+    border:1px solid rgba(255,255,255,.1);
+    padding:35px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
+
+.lesson h3{
+    color:#00d9ff;
+    margin:20px 0 12px;
+}
+
+.lesson p,
+.lesson li{
+    color:#c0d0df;
+    line-height:1.8;
+}
+
+.lesson ul{
+    margin-left:25px;
+}
+
+code{
+    display:block;
+    background:#020b14;
+    color:#5ee7ff;
+    padding:18px;
+    margin:15px 0;
+    border-radius:10px;
+    overflow:auto;
+    border-left:4px solid #00d9ff;
+}
+
+/* TOPOLOGY */
+.topology-box{
+    max-width:900px;
+    margin:auto;
+    background:#071827;
+    border:1px solid #193a55;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+}
+
+.topology{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
+
+.node{
+    width:100px;
+    height:80px;
+    background:#102d46;
+    border:2px solid #00d9ff;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.connection{
+    width:60px;
+    height:4px;
+    background:#00d9ff;
+}
+
+/* CALCULATOR */
+.calculator{
+    max-width:700px;
+    margin:auto;
+    background:#0c2238;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid #214967;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:7px;
+    color:#a8bfd3;
+}
+
+input,select{
+    width:100%;
+    padding:13px;
+    background:#06121f;
+    color:white;
+    border:1px solid #31516b;
+    border-radius:10px;
+    outline:none;
+}
+
+input:focus,select:focus{
+    border-color:#00d9ff;
+}
+
+.result{
+    margin-top:20px;
+    background:#06121f;
+    border-radius:12px;
+    padding:20px;
+    line-height:2;
+}
+
+/* QUIZ */
+.quiz{
+    max-width:800px;
+    margin:auto;
+}
+
+.question{
+    background:#0d263d;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.options label{
+    display:block;
+    padding:12px;
+    margin-top:8px;
+    background:#081b2c;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.options label:hover{
+    background:#123957;
+}
+
+.score{
+    margin-top:20px;
+    font-size:22px;
+    text-align:center;
+    color:#00d9ff;
+}
+
+/* PROGRESS */
+.progress-box{
+    max-width:800px;
+    margin:auto;
+}
+
+.progress{
+    height:20px;
+    background:#102438;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:20%;
+    height:100%;
+    background:linear-gradient(90deg,#00d9ff,#8b5cf6,#22c55e);
+    transition:1s;
+}
+
+.progress-text{
+    text-align:center;
+    margin-top:10px;
+    color:#9db2c6;
+}
+
+/* TIP */
+.tip{
+    max-width:800px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#102c42,#162449);
+    border-left:5px solid #00d9ff;
+}
+
+.tip strong{
+    color:#00d9ff;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:40px;
+    background:#030b13;
+    color:#7f96aa;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:65px;
+        left:0;
+        width:100%;
+        flex-direction:column;
+        background:#07111f;
+        padding:20px;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .network{
+        width:100%;
+        max-width:430px;
+        transform:scale(.85);
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+
+    .lesson{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">RASYAD<span>TKJ</span></div>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><button onclick="goTo('home')">Home</button></li>
+        <li><button onclick="goTo('materi')">Materi</button></li>
+        <li><button onclick="goTo('subnet')">Subnetting</button></li>
+        <li><button onclick="goTo('quiz')">Quiz</button></li>
+        <li><button onclick="goTo('calculator')">Kalkulator</button></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <div class="badge">🚀 Platform Belajar TKJ</div>
+
+        <h1>
+            Belajar TKJ<br>
+            Bersama <span class="gradient">Rasyad</span>
+        </h1>
+
+        <p>
+            Belajar Teknik Komputer dan Jaringan dari dasar
+            sampai memahami konfigurasi jaringan, subnetting,
+            topologi, VLAN, dan konsep jaringan lainnya.
+        </p>
+
+        <div class="buttons">
+            <button class="btn btn-primary"
+                    onclick="goTo('materi')">
+                📚 Mulai Belajar
+            </button>
+
+            <button class="btn btn-secondary"
+                    onclick="goTo('quiz')">
+                🧠 Kerjakan Quiz
+            </button>
+        </div>
+
+    </div>
+
+    <!-- ANIMASI JARINGAN -->
+    <div class="network">
+
+        <div class="line l1"></div>
+        <div class="line l2"></div>
+        <div class="line l3"></div>
+        <div class="line l4"></div>
+
+        <div class="device router">📡</div>
+        <div class="device pc1">💻</div>
+        <div class="device pc2">💻</div>
+        <div class="device server">🖥️</div>
+        <div class="device pc3">💻</div>
+
+    </div>
+
+</section>
+
+<!-- MATERI -->
+<section id="materi">
+
+    <div class="section-title">
+        <h2>📚 Materi TKJ</h2>
+        <p>Pahami konsepnya satu per satu.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">⚙️</div>
+            <h3>Basic Config</h3>
+            <p>
+                Pelajari konfigurasi dasar perangkat jaringan,
+                IP address, gateway, DNS dan konfigurasi router.
+            </p>
+            <button class="btn btn-primary"
+                    onclick="goTo('basic')">
+                Pelajari
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔢</div>
+            <h3>Subnetting</h3>
+            <p>
+                Pelajari IP address, subnet mask, prefix,
+                network, broadcast, host dan pembagian subnet.
+            </p>
+            <button class="btn btn-primary"
+                    onclick="goTo('subnet')">
+                Pelajari
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔗</div>
+            <h3>Topologi Jaringan</h3>
+            <p>
+                Kenali topologi Bus, Star, Ring, Mesh,
+                Tree dan Hybrid.
+            </p>
+            <button class="btn btn-primary"
+                    onclick="goTo('topologi')">
+                Pelajari
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏷️</div>
+            <h3>VLAN</h3>
+            <p>
+                Pelajari konsep VLAN, fungsi VLAN,
+                access port, trunk dan komunikasi antar VLAN.
+            </p>
+            <button class="btn btn-primary"
+                    onclick="goTo('vlan')">
+                Pelajari
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BASIC CONFIG -->
+<section id="basic">
+
+<div class="section-title">
+    <h2>⚙️ Basic Config</h2>
+    <p>Konfigurasi dasar perangkat jaringan.</p>
+</div>
+
+<div class="lesson">
+
+<h3>1. Apa itu Basic Config?</h3>
+
+<p>
+Basic configuration adalah konfigurasi awal perangkat jaringan
+agar perangkat dapat digunakan dan berkomunikasi dalam jaringan.
+</p>
+
+<h3>2. IP Address</h3>
+
+<p>
+IP address merupakan alamat logis yang digunakan perangkat
+untuk berkomunikasi dalam jaringan.
+</p>
+
+<p>Contoh:</p>
+
+<code>
+IP Address : 192.168.1.10
+Subnet Mask : 255.255.255.0
+Gateway : 192.168.1.1
+DNS : 8.8.8.8
+</code>
+
+<h3>3. Konsep Gateway</h3>
+
+<p>
+Gateway merupakan perangkat atau alamat yang digunakan
+untuk menghubungkan jaringan lokal menuju jaringan lain.
+Biasanya gateway berada pada router.
+</p>
+
+<h3>4. Contoh konfigurasi MikroTik</h3>
+
+<code>
+/ip address add address=192.168.1.1/24 interface=ether1
+
+/ip address print
+
+/ip route add gateway=192.168.1.254
+
+/ip dns set servers=8.8.8.8
+</code>
+
+<h3>5. Contoh konfigurasi Cisco</h3>
+
+<code>
+enable
+configure terminal
+
+interface gigabitEthernet 0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+
+exit
+</code>
+
+<h3>💡 Tips Rasyad</h3>
+
+<p>
+Jangan langsung menghafal perintah konfigurasi.
+Pahami dahulu fungsi setiap perintah.
+</p>
+
+</div>
+
+</section>
+
+<!-- SUBNETTING -->
+<section id="subnet">
+
+<div class="section-title">
+    <h2>🔢 Subnetting</h2>
+    <p>Memahami pembagian jaringan IP.</p>
+</div>
+
+<div class="lesson">
+
+<h3>1. Apa itu Subnetting?</h3>
+
+<p>
+Subnetting adalah proses membagi satu jaringan besar
+menjadi beberapa jaringan yang lebih kecil.
+</p>
+
+<h3>2. Contoh IP</h3>
+
+<code>
+192.168.1.0/24
+</code>
+
+<p>
+Prefix /24 memiliki subnet mask:
+</p>
+
+<code>
+255.255.255.0
+</code>
+
+<h3>3. Rumus penting</h3>
+
+<code>
+Jumlah host = 2^jumlah bit host - 2
+
+Jumlah subnet = 2^jumlah bit yang dipinjam
+</code>
+
+<h3>4. Contoh /27</h3>
+
+<p>
+Subnet mask /27:
+</p>
+
+<code>
+255.255.255.224
+</code>
+
+<p>
+Jumlah alamat dalam satu subnet:
+</p>
+
+<code>
+2^(32 - 27) = 32 alamat
+</code>
+
+<p>
+Host yang dapat digunakan:
+</p>
+
+<code>
+32 - 2 = 30 host
+</code>
+
+<h3>5. Blok subnet /27</h3>
+
+<code>
+192.168.1.0
+192.168.1.32
+192.168.1.64
+192.168.1.96
+192.168.1.128
+192.168.1.160
+192.168.1.192
+192.168.1.224
+</code>
+
+<h3>6. Contoh subnet pertama</h3>
+
+<code>
+Network   : 192.168.1.0
+Host      : 192.168.1.1 - 192.168.1.30
+Broadcast : 192.168.1.31
+</code>
+
+</div>
+
+</section>
+
+<!-- TOPOLOGI -->
+<section id="topologi">
+
+<div class="section-title">
+    <h2>🔗 Topologi Jaringan</h2>
+    <p>Mengenal bentuk hubungan antar perangkat.</p>
+</div>
+
+<div class="topology-box">
+
+<div class="topology">
+
+    <div class="node">
+        💻
+        <small>PC 1</small>
+    </div>
+
+    <div class="connection"></div>
+
+    <div class="node">
+        🔀
+        <small>Switch</small>
+    </div>
+
+    <div class="connection"></div>
+
+    <div class="node">
+        📡
+        <small>Router</small>
+    </div>
+
+    <div class="connection"></div>
+
+    <div class="node">
+        🌐
+        <small>Internet</small>
+    </div>
+
+</div>
+
+<div class="lesson">
+
+<h3>⭐ Star</h3>
+
+<p>
+Semua perangkat terhubung ke perangkat pusat,
+biasanya switch.
+</p>
+
+<h3>⭐ Bus</h3>
+
+<p>
+Semua perangkat menggunakan satu jalur utama.
+</p>
+
+<h3>⭐ Ring</h3>
+
+<p>
+Perangkat tersusun membentuk lingkaran.
+</p>
+
+<h3>⭐ Mesh</h3>
+
+<p>
+Perangkat memiliki banyak koneksi dengan perangkat lainnya.
+</p>
+
+<h3>⭐ Tree</h3>
+
+<p>
+Topologi bertingkat yang menyerupai struktur pohon.
+</p>
+
+<h3>⭐ Hybrid</h3>
+
+<p>
+Gabungan dari beberapa jenis topologi.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VLAN -->
+<section id="vlan">
+
+<div class="section-title">
+    <h2>🏷️ VLAN</h2>
+    <p>Virtual Local Area Network.</p>
+</div>
+
+<div class="lesson">
+
+<h3>1. Apa itu VLAN?</h3>
+
+<p>
+VLAN adalah metode untuk membagi satu jaringan fisik
+menjadi beberapa jaringan logis.
+</p>
+
+<h3>2. Contoh VLAN</h3>
+
+<code>
+VLAN 10 = ADMIN
+VLAN 20 = GURU
+VLAN 30 = SISWA
+</code>
+
+<h3>3. Access Port</h3>
+
+<p>
+Access port biasanya digunakan untuk menghubungkan
+end device seperti PC ke VLAN tertentu.
+</p>
+
+<h3>4. Trunk Port</h3>
+
+<p>
+Trunk digunakan untuk membawa beberapa VLAN melalui
+satu koneksi.
+</p>
+
+<h3>5. Contoh Cisco VLAN</h3>
+
+<code>
+enable
+configure terminal
+
+vlan 10
+name ADMIN
+
+vlan 20
+name GURU
+
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+</code>
+
+<h3>6. Inter-VLAN Routing</h3>
+
+<p>
+Agar perangkat dari VLAN yang berbeda dapat berkomunikasi,
+dibutuhkan routing, misalnya menggunakan router atau
+Layer 3 switch.
+</p>
+
+</div>
+
+</section>
+
+<!-- PROGRESS -->
+<section>
+
+<div class="section-title">
+    <h2>📊 Progress Belajar</h2>
+    <p>Lihat perkembangan pembelajaranmu.</p>
+</div>
+
+<div class="progress-box">
+
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="progress-text" id="progressText">
+    Progress: 20%
+</div>
+
+</div>
+
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+
+<div class="section-title">
+    <h2>🧮 Kalkulator Subnet</h2>
+    <p>Masukkan IP dan prefix untuk menghitung jaringan.</p>
+</div>
+
+<div class="calculator">
+
+<div class="input-group">
+<label>IP Address</label>
+<input type="text"
+       id="ipInput"
+       value="192.168.1.10">
+</div>
+
+<div class="input-group">
+<label>Prefix</label>
+
+<select id="prefixInput">
+    <option value="24">/24</option>
+    <option value="25">/25</option>
+    <option value="26">/26</option>
+    <option value="27">/27</option>
+    <option value="28">/28</option>
+    <option value="29">/29</option>
+    <option value="30">/30</option>
+</select>
+
+</div>
+
+<button class="btn btn-primary"
+        onclick="calculateSubnet()">
+    🔍 Hitung
+</button>
+
+<div class="result" id="result">
+    Masukkan IP lalu tekan tombol Hitung.
+</div>
+
+</div>
+
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+
+<div class="section-title">
+    <h2>🧠 Tanya Jawab TKJ</h2>
+    <p>Uji kemampuanmu bersama Rasyad.</p>
+</div>
+
+<div class="quiz">
+
+<div class="question">
+<h3>1. Apa fungsi IP Address?</h3>
+
+<div class="options">
+
+<label>
+<input type="radio" name="q1" value="a">
+A. Memberikan alamat pada perangkat jaringan
+</label>
+
+<label>
+<input type="radio" name="q1" value="b">
+B. Memperbesar RAM
+</label>
+
+<label>
+<input type="radio" name="q1" value="c">
+C. Menghapus virus
+</label>
+
+</div>
+</div>
+
+<div class="question">
+
+<h3>2. Berapa host usable pada /27?</h3>
+
+<div class="options">
+
+<label>
+<input type="radio" name="q2" value="a">
+A. 14
+</label>
+
+<label>
+<input type="radio" name="q2" value="b">
+B. 30
+</label>
+
+<label>
+<input type="radio" name="q2" value="c">
+C. 62
+</label>
+
+</div>
+
+</div>
+
+<div class="question">
+
+<h3>3. Perangkat yang biasanya menjadi pusat topologi Star?</h3>
+
+<div class="options">
+
+<label>
+<input type="radio" name="q3" value="a">
+A. Switch
+</label>
+
+<label>
+<input type="radio" name="q3" value="b">
+B. Keyboard
+</label>
+
+<label>
+<input type="radio" name="q3" value="c">
+C. Monitor
+</label>
+
+</div>
+
+</div>
+
+<div class="question">
+
+<h3>4. Apa kepanjangan VLAN?</h3>
+
+<div class="options">
+
+<label>
+<input type="radio" name="q4" value="a">
+A. Virtual Local Area Network
+</label>
+
+<label>
+<input type="radio" name="q4" value="b">
+B. Virtual Large Access Network
+</label>
+
+<label>
+<input type="radio" name="q4" value="c">
+C. Variable Local Address Network
+</label>
+
+</div>
+
+</div>
+
+<div class="question">
+
+<h3>5. Port yang digunakan untuk membawa beberapa VLAN disebut?</h3>
+
+<div class="options">
+
+<label>
+<input type="radio" name="q5" value="a">
+A. Access
+</label>
+
+<label>
+<input type="radio" name="q5" value="b">
+B. Trunk
+</label>
+
+<label>
+<input type="radio" name="q5" value="c">
+C. Console
+</label>
+
+</div>
+
+</div>
+
+<button class="btn btn-primary"
+        onclick="checkQuiz()">
+    ✅ Periksa Jawaban
+</button>
+
+<div class="score" id="score"></div>
+
+</div>
+
+</section>
+
+<!-- TIPS -->
+<section>
+
+<div class="tip">
+
+<strong>💡 Pesan Rasyad:</strong>
+
+<p style="margin-top:10px;color:#b9cad8;line-height:1.8">
+
+"Kalau ingin jago TKJ, jangan hanya menghafal.
+Pahami konsep IP, subnetting, perangkat jaringan,
+dan biasakan melakukan praktik langsung."
+
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>🌐 Belajar Bersama Rasyad</p>
+
+<p style="margin-top:8px">
+Materi TKJ • Basic Config • Subnetting • Topologi • VLAN
+</p>
+
+<p style="margin-top:15px">
+© 2026 Rasyad TKJ
+</p>
+
+</footer>
+
+<script>
+
+/* NAVIGATION */
+function goTo(id){
+
+    document.getElementById(id)
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    document.getElementById("navLinks")
+        .classList.remove("active");
+
+    updateProgress(id);
+}
+
+
+/* MOBILE MENU */
+function toggleMenu(){
+
+    document.getElementById("navLinks")
+        .classList.toggle("active");
+
+}
+
+
+/* PROGRESS */
+function updateProgress(id){
+
+    let progress = 20;
+
+    if(id === "basic") progress = 35;
+    if(id === "subnet") progress = 50;
+    if(id === "topologi") progress = 65;
+    if(id === "vlan") progress = 80;
+    if(id === "quiz") progress = 100;
+
+    document.getElementById("progressBar")
+        .style.width = progress + "%";
+
+    document.getElementById("progressText")
+        .innerText = "Progress: " + progress + "%";
+}
+
+
+/* SUBNET CALCULATOR */
+function ipToNumber(ip){
+
+    let parts = ip.split(".");
+
+    if(parts.length !== 4)
+        return null;
+
+    let nums = parts.map(Number);
+
+    for(let n of nums){
+
+        if(
+            isNaN(n) ||
+            n < 0 ||
+            n > 255
+        ){
+            return null;
+        }
+
+    }
+
+    return (
+        nums[0] * 256**3 +
+        nums[1] * 256**2 +
+        nums[2] * 256 +
+        nums[3]
+    );
+}
+
+
+function numberToIp(num){
+
+    return [
+        Math.floor(num / 256**3) % 256,
+        Math.floor(num / 256**2) % 256,
+        Math.floor(num / 256) % 256,
+        num % 256
+    ].join(".");
+}
+
+
+function calculateSubnet(){
+
+    let ip = document
+        .getElementById("ipInput")
+        .value.trim();
+
+    let prefix = parseInt(
+        document.getElementById("prefixInput").value
+    );
+
+    let ipNumber = ipToNumber(ip);
+
+    if(ipNumber === null){
+
+        document.getElementById("result")
+            .innerHTML =
+            "❌ IP Address tidak valid.";
+
+        return;
+    }
+
+    let totalAddresses = 2 ** (32-prefix);
+    let usableHosts =
+        prefix >= 31
+        ? totalAddresses
+        : totalAddresses - 2;
+
+    let mask =
+        (0xffffffff << (32-prefix)) >>> 0;
+
+    let network =
+        (ipNumber & mask) >>> 0;
+
+    let broadcast =
+        (network + totalAddresses - 1) >>> 0;
+
+    let firstHost =
+        prefix >= 31
+        ? network
+        : network + 1;
+
+    let lastHost =
+        prefix >= 31
+        ? broadcast
+        : broadcast - 1;
+
+    let subnetMask = [
+        (mask >>> 24) & 255,
+        (mask >>> 16) & 255,
+        (mask >>> 8) & 255,
+        mask & 255
+    ].join(".");
+
+    document.getElementById("result")
+        .innerHTML = `
+
+        <b>📌 Hasil Perhitungan</b><br><br>
+
+        IP Address :
+        <b>${ip}</b><br>
+
+        Prefix :
+        <b>/${prefix}</b><br>
+
+        Subnet Mask :
+        <b>${subnetMask}</b><br>
+
+        Network :
+        <b>${numberToIp(network)}</b><br>
+
+        First Host :
+        <b>${numberToIp(firstHost)}</b><br>
+
+        Last Host :
+        <b>${numberToIp(lastHost)}</b><br>
+
+        Broadcast :
+        <b>${numberToIp(broadcast)}</b><br>
+
+        Total Address :
+        <b>${totalAddresses}</b><br>
+
+        Usable Host :
+        <b>${usableHosts}</b>
+
+        `;
+
+}
+
+
+/* QUIZ */
+function checkQuiz(){
+
+    let answers = {
+        q1:"a",
+        q2:"b",
+        q3:"a",
+        q4:"a",
+        q5:"b"
+    };
+
+    let score = 0;
+
+    for(let q in answers){
+
+        let selected =
+            document.querySelector(
+                'input[name="' + q + '"]:checked'
+            );
+
+        if(selected &&
+           selected.value === answers[q]){
+
+            score++;
+
+        }
+
+    }
+
+    let nilai = score * 20;
+
+    let message = "";
+
+    if(nilai === 100){
+        message = "🔥 Luar biasa! Kamu menguasai materi.";
+    }
+    else if(nilai >= 80){
+        message = "👏 Bagus! Tinggal sedikit lagi.";
+    }
+    else if(nilai >= 60){
+        message = "👍 Lumayan. Coba pelajari lagi materinya.";
+    }
+    else{
+        message = "📚 Jangan menyerah. Pelajari materi dan coba lagi.";
+    }
+
+    document.getElementById("score")
+        .innerHTML =
+        `Nilai kamu: ${nilai}/100<br>${message}`;
+
+    updateProgress("quiz");
+}
+
+
+/* DEFAULT CALCULATOR */
+calculateSubnet();
+
+</script>
+
+</body>
+</html>
